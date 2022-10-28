@@ -1,0 +1,25 @@
+server:
+  port: '@server.eureka.port@' #服务注册中心端口号
+  
+spring:  application:    name: explore-eureka-server #服务名称
+  profiles:    active: '@profiles.active@'  security:    
+    user:
+      name: '@security.user.name@'
+      password: '@security.user.password@'  
+
+eureka:  instance:    hostname: '@eureka.instance.hostname@' #服务注册中心IP
+     #eureka客户端需要多长时间发送心跳给eureka服务器，表明他仍然活着，默认30秒
+    lease-renewal-interval-in-seconds: '@eureka.instance.lease-renewal-interval-in-seconds@'
+    #eureka服务器在接受到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认90秒
+    lease-expiration-duration-in-seconds: '@eureka.instance.lease-expiration-duration-in-seconds@'
+  client:    service-url: #服务注册中心的配置内容，指定服务注册中心的位置      defaultZone: '@eureka.client.service-url@' #注册地址
+    #实例是否在eureka服务器上注册自己的信息以提供其他服务发现,默认为true
+    register-with-eureka: '@eureka.client.register-with-eureka@'  #是否往服务注册中心注册自己，默认为true。单机版的可设置成false。集群搭建中，设置true。
+    #此客户端是否获取eureka服务器注册表上的注册信息,默认为true
+    fetch-registry: '@eureka.client.fetch-registry@'      #单机版的可设置成false，集群版的由于需要同步其他节点的服务注册数据，故设成true。
+    #表示eureka client间隔多久去拉取服务器注册信息,默认为30秒
+    registry-fetch-interval-seconds: '@eureka.client.registry-fetch-interval-seconds@'
+  server:
+    #开启自我保护模式（开启状态下服务停掉eureka不会立即清除掉宕掉的服务）    enable-self-preservation: '@eureka.server.enable-self-preservation@'  #是否开启自我保护模式，默认值true
+    #清理无效节点,默认60*1000毫秒,即60秒
+    eviction-interval-timer-in-ms: '@eureka.server.eviction-interval-timer-in-ms@' #扫描失效服务的间隔时间，单位毫秒，默认值 60 * 1000

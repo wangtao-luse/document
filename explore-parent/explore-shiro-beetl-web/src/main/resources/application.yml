@@ -1,0 +1,9 @@
+server:
+  port: 9020
+spring:  application:    name: explore-shiro-beetl-web
+  profiles:    active: '@profiles.active@'eureka:
+  client:
+    service-url:
+      defaultZone: '@eureka.client.service-url@'
+  instance:
+    prefer-ip-address: true  

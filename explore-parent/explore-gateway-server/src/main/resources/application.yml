@@ -1,0 +1,32 @@
+server:
+  port: '@server.gateway.port@'
+  
+spring:
+  application:
+    name: explore-gateway-server
+  profiles:
+    active: '@profiles.active@'
+  cloud:
+    gateway:
+      discovery:        locator:          enabled: true
+          lower-case-service-id: true      routes:      - id: member-api #唯一标识，必须唯一
+        uri: lb://root:top$958958@explore-member-service
+        predicates: #表示符合规则就进行转发        - Path=/member/** #匹配该请求/member/**规则 就转发到 http://explore-member-service/member/** 去
+        filters:        - StripPrefix=1  #表示请求路径截取第1个字符串 ( http://explore-member-service/**)  main:    web-application-type: reactive
+  security:
+    user:
+      name: '@security.user.name@'
+      password: '@security.user.password@'          
+eureka:
+  client:
+    service-url: #注册中心的注册地址
+      defaultZone: '@eureka.client.client-url@'
+    #表示eureka client间隔多久去拉取服务器注册信息,默认为30秒
+    registry-fetch-interval-seconds: '@eureka.client.registry-fetch-interval-seconds@'    
+  instance:
+    prefer-ip-address: '@eureka.instance.prefer-ip-address@'  #默认为false
+    #eureka客户端需要多长时间发送心跳给eureka服务器，表明他仍然活着，默认30秒
+    lease-renewal-interval-in-seconds: '@eureka.instance.lease-renewal-interval-in-seconds@'
+    #eureka服务器在接受到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认90秒
+    lease-expiration-duration-in-seconds: '@eureka.instance.lease-expiration-duration-in-seconds@'
+    

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.5</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>com.explore</groupId>
+  <artifactId>explore-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>explore-eureka-server</module>
+    <module>explore-member-persist</module>
+    <module>explore-member-service</module>
+    <module>explore-member-api</module>
+    <module>explore-common</module>
+    <module>explore-model</module>
+    <module>explore-zuul-server</module>
+  <module>explore-gateway-server</module>
+  <module>explore-security-thymeleaf-web</module>
+  </modules>
+  <properties>
+    <java.version>1.8</java.version>
+    <spring-cloud.version>2021.0.4</spring-cloud.version>
+    <google.guava.vesion>20.0</google.guava.vesion>
+    <hutool.version>5.8.8</hutool.version>
+    <fastjson.version>2.0.15</fastjson.version>
+    <mysql-connector-java.version>8.0.31</mysql-connector-java.version>
+    <mybatis-plus-boot>3.5.2</mybatis-plus-boot>
+    <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
+    <spring-boot-velocity.version>1.4.7.RELEASE</spring-boot-velocity.version>
+    <spring-cloud-zuul.version>2.2.10.RELEASE</spring-cloud-zuul.version>
+    <shiro-spring-boot.version>1.10.0</shiro-spring-boot.version>
+  </properties>
+  <dependencies>
+  <!-- shiro
+  <dependency>
+	 <groupId>org.apache.shiro</groupId>
+	 <artifactId>shiro-spring-boot-web-starter</artifactId>
+	 <version>${shiro-spring-boot.version}</version>
+  </dependency> -->
+  <!-- spring security  -->
+   <dependency>
+   	  <groupId>org.springframework.boot</groupId>
+   	  <artifactId>spring-boot-starter-security</artifactId>
+    </dependency> 
+    <!-- fegin -->
+    <dependency>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-starter-openfeign</artifactId>
+	</dependency>
+    <!-- 模板引擎 -->
+    <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-devtools</artifactId>
+	</dependency>
+    <!-- 模板引擎 -->
+    <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+	<dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-velocity</artifactId>
+	  <version>${spring-boot-velocity.version}</version>
+	</dependency>
+	<!-- json工具 -->
+    <dependency>
+	  <groupId>com.alibaba</groupId>
+	  <artifactId>fastjson</artifactId>
+	  <version>${fastjson.version}</version>
+	</dependency>
+    <!-- java工具类-->
+    <dependency>
+	  <groupId>com.google.guava</groupId>
+	  <artifactId>guava</artifactId>
+	  <version>${google.guava.vesion}</version>
+	</dependency>
+    <dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-lang3</artifactId>
+	</dependency>
+	<dependency>
+	  <groupId>cn.hutool</groupId>
+	  <artifactId>hutool-all</artifactId>
+	  <version>${hutool.version}</version>
+	</dependency>
+	<!-- redis -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <!-- web -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- springboot start -->   
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+     <!-- springboot test -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <!-- springCloud -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+	  <!-- mysql -->
+	  <dependency>
+		 <groupId>mysql</groupId>
+		 <artifactId>mysql-connector-java</artifactId>
+		 <version>${mysql-connector-java.version}</version>
+	  </dependency>
+	  <!-- mybatis plus -->
+	  <dependency>
+		 <groupId>com.baomidou</groupId>
+		 <artifactId>mybatis-plus-boot-starter</artifactId>
+		 <version>${mybatis-plus-boot}</version>
+	  </dependency>	  
+	  <dependency>
+		 <groupId>com.baomidou</groupId>
+		 <artifactId>mybatis-plus-generator</artifactId>
+		 <version>${mybatis-plus-generator.version}</version>
+	  </dependency>
+	  <!-- zuul -->
+	  <dependency>
+	  <groupId>org.springframework.cloud</groupId>
+	  <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+	  <version>${spring-cloud-zuul.version}</version>
+	</dependency>
+		
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+         <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+         <profiles.active>dev</profiles.active>
+         <!-- 服务端口-->
+         <server.member.port>9010</server.member.port>
+         <server.shiro.port>9020</server.shiro.port>
+         <server.gateway.port>9030</server.gateway.port>
+         <!-- eureka --> 
+         <server.eureka.port>9000</server.eureka.port>       
+         <eureka.instance.hostname>127.0.0.1</eureka.instance.hostname>
+         <eureka.instance.prefer-ip-address>false</eureka.instance.prefer-ip-address>
+         <eureka.instance.lease-renewal-interval-in-seconds>30</eureka.instance.lease-renewal-interval-in-seconds>
+         <eureka.instance.lease-expiration-duration-in-seconds>90</eureka.instance.lease-expiration-duration-in-seconds>
+         <eureka.client.service-url>http://127.0.0.1:9000/eureka</eureka.client.service-url> 
+         <eureka.client.client-url>http://root:top$958958@127.0.0.1:9000/eureka</eureka.client.client-url>
+         <eureka.client.register-with-eureka>false</eureka.client.register-with-eureka>
+         <eureka.client.fetch-registry>false</eureka.client.fetch-registry>
+         <eureka.client.registry-fetch-interval-seconds>30</eureka.client.registry-fetch-interval-seconds>
+         <eureka.server.enable-self-preservation>false</eureka.server.enable-self-preservation>
+         <eureka.server.eviction-interval-timer-in-ms>60000</eureka.server.eviction-interval-timer-in-ms>
+         
+         <!-- 数据库 -->
+         <mysql.driver-class-name>com.mysql.cj.jdbc.Driver</mysql.driver-class-name>
+         <member.datasource.url>jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC</member.datasource.url>
+         <member.username>root</member.username>
+         <member.password>mysql@958958</member.password>
+         <!-- redis -->
+         <member.redis.database>0</member.redis.database>
+         <member.redis.password>redis@958958</member.redis.password>
+         <member.redis.host>1.116.226.147</member.redis.host>
+         <member.redis.port>6379</member.redis.port>
+         <member.redis.timeout>5000</member.redis.timeout>
+         <!-- security -->
+         <security.user.name>root</security.user.name>
+         <security.user.password>top$958958</security.user.password>
+      </properties>
+    </profile>
+    <profile>
+      <id>test</id>
+      <activation>
+         <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+         <profiles.active>test</profiles.active>
+         <!-- 服务端口-->
+         <server.member.port>9010</server.member.port>        
+         <server.shiro.port>9020</server.shiro.port>
+         <server.gateway.port>9030</server.gateway.port>
+         <!-- eureka --> 
+         <server.eureka.port>9000</server.eureka.port>
+         <server.eureka.port-1>9001</server.eureka.port-1>
+         <server.eureka.port-2>9002</server.eureka.port-2> 
+         <eureka.instance.hostname>127.0.0.1</eureka.instance.hostname>
+         <eureka.instance.hostname-1>127.0.0.1</eureka.instance.hostname-1>
+         <eureka.instance.hostname-2>127.0.0.1</eureka.instance.hostname-2> 
+         <eureka.instance.prefer-ip-address>false</eureka.instance.prefer-ip-address>
+         <eureka.instance.lease-renewal-interval-in-seconds>30</eureka.instance.lease-renewal-interval-in-seconds>
+         <eureka.instance.lease-expiration-duration-in-seconds>90</eureka.instance.lease-expiration-duration-in-seconds>
+         <eureka.client.service-url>
+	         http://@eureka.instance.hostname@:@server.eureka.port@/eureka,
+	         http://@eureka.instance.hostname-1@:@server.eureka.port-1@/eureka,
+	         http://@eureka.instance.hostname-2@:@server.eureka.port-2@/eureka
+         </eureka.client.service-url>    
+         <eureka.client.client-url>
+         	 http://root:top$958958@127.0.0.1:9000/eureka,
+	         http://root:top$958958@127.0.0.1:9001/eureka,
+	         http://root:top$958958@127.0.0.1:9002/eureka
+         </eureka.client.client-url>
+         <eureka.client.register-with-eureka>true</eureka.client.register-with-eureka>
+         <eureka.client.fetch-registry>true</eureka.client.fetch-registry>
+         <eureka.client.registry-fetch-interval-seconds>30</eureka.client.registry-fetch-interval-seconds>
+         <eureka.server.enable-self-preservation>true</eureka.server.enable-self-preservation>
+         <eureka.server.eviction-interval-timer-in-ms>60000</eureka.server.eviction-interval-timer-in-ms>        
+      
+         <!-- 数据库 -->
+         <mysql.driver-class-name>com.mysql.cj.jdbc.Driver</mysql.driver-class-name>
+         <member.datasource.url>jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC</member.datasource.url>
+         <member.username>root</member.username>
+         <member.password>mysql@958958</member.password>
+         <!-- redis -->
+         <member.redis.database>0</member.redis.database>
+         <member.redis.password>redis@958958</member.redis.password>
+         <member.redis.host>1.116.226.147</member.redis.host>
+         <member.redis.port>6379</member.redis.port>
+         <member.redis.timeout>5000</member.redis.timeout>
+         <!-- security -->
+         <security.user.name>root</security.user.name>
+         <security.user.password>top$958958</security.user.password>
+      </properties>
+    </profile>
+    
+  </profiles>
+</project>

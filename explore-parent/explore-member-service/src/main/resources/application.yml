@@ -1,0 +1,36 @@
+server:
+  port: '@server.member.port@'
+
+spring:  application:    name: explore-member-service
+  profiles:    active: '@profiles.active@'
+  datasource: #mysql的配置
+    url: '@member.datasource.url@'
+    driver-class-name: '@mysql.driver-class-name@'
+    username: '@member.username@'
+    password: '@member.password@'    
+  sql:    init:      schema-locations:      - classpath:member.sql
+      mode: always
+  security:    user:      name: '@security.user.name@'
+      password: '@security.user.password@'  redis:
+    database: '@member.redis.database@'
+    password: '@member.redis.password@'
+    host: '@member.redis.host@'
+    port: '@member.redis.port@'
+    timeout: '@member.redis.timeout@'    
+eureka:
+  client:
+    service-url: #注册中心的注册地址
+      defaultZone: '@eureka.client.client-url@'
+    #表示eureka client间隔多久去拉取服务器注册信息,默认为30秒
+    registry-fetch-interval-seconds: '@eureka.client.registry-fetch-interval-seconds@'    
+  instance:
+    prefer-ip-address: '@eureka.instance.prefer-ip-address@'  #默认为false
+    #eureka客户端需要多长时间发送心跳给eureka服务器，表明他仍然活着，默认30秒
+    lease-renewal-interval-in-seconds: '@eureka.instance.lease-renewal-interval-in-seconds@'
+    #eureka服务器在接受到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认90秒
+    lease-expiration-duration-in-seconds: '@eureka.instance.lease-expiration-duration-in-seconds@'
+    
+mybatis-plus:  mapper-locations:  - classpath*:mapping/*.xml
+  type-aliases-package: com.explore.model.member
+  configuration:    map-underscore-to-camel-case: true
+  
